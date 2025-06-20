@@ -19,11 +19,12 @@ export default function Cart() {
   useEffect(() => {
     const savedPhone = localStorage.getItem('phone');
     if (savedPhone) {
-      setPhoneValue(savedPhone);
+      inputRef.current.value = savedPhone;
     }
-  }, []);
+  }, [inputRef]);
 
   useEffect(() => {
+    if (!phoneValue) return;
     localStorage.setItem('phone', phoneValue);
   }, [phoneValue]);
 
@@ -87,7 +88,7 @@ export default function Cart() {
         <div className="flex flex-col gap-2">
           <input
             ref={inputRef}
-            value={phoneValue}
+            // value={phoneValue}
             onChange={(e) => setPhoneValue(e.target.value)}
             className="h-[68px] bg-background text-secondary min-md:text-4xl text-2xl text-center rounded-[15px] p-3"
           />
