@@ -20,6 +20,7 @@ export default function Cart() {
     const savedPhone = localStorage.getItem('phone');
     if (savedPhone) {
       inputRef.current.value = savedPhone;
+      setPhoneValue(savedPhone);
     }
   }, [inputRef]);
 
